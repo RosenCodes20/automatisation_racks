@@ -22,9 +22,12 @@ def load_all_racks(file_name):
     return df
 
 def racks_logic(request):
-    df = load_all_racks("racks.xlxs")
+    df = load_all_racks("racks.xlsx")
+    all_racks = load_all_racks("all_racks.xlsx")
 
     racks = []
+
+    print(all_racks)
 
     for _, row in df.iterrows():
         racks.append({
