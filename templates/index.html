@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
+</head>
+<body>
+    <div class="rack-grid">
+        {% for rack in racks %}
+            <div class="rack">
+                {{ rack.cell_code }} <br>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
