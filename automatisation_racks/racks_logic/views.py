@@ -22,7 +22,7 @@ def load_all_racks(file_name):
     return df
 
 def racks_logic(request):
-    df = load_all_racks()
+    df = load_all_racks("racks.xlxs")
 
     racks = []
 
