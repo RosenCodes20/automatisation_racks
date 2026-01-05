@@ -25,24 +25,15 @@ def racks_logic(request):
     df = load_all_racks("racks.xlsx", "Код клетка")
     all_racks = load_all_racks("all_racks.xlsx", "Код")
 
+    occupied_cells = set(df["Код клетка"].dropna())
+
     racks = []
 
-    for _, row in df.iterrows():
-        for none, all_racks_row in all_racks.iterrows():
-            if row['Код клетка'] == all_racks_row['Код']:
-                racks.append({
-                    "cell_code": row["Код клетка"],
-                    "rack": row["Код клетка"].rsplit("-", 1)[0],
-                    "status": "блокирана",
-                    "quantity": row["Количество"],
-                })
-            else:
-                racks.append({
-                    "cell_code": row["Код клетка"],
-                    "rack": row["Код клетка"].rsplit("-", 1)[0],
-                    "status": "свободна",
-                    "quantity": row["Количество"],
-                })
+    for _, row in all_racks.iterrows():
+            racks.append({
+                "cell_code": row["Код"],
+                "status": "заета" if row['Код'] in occupied_cells else "свободна",
+            })
 
     context = {
         'racks': racks,
