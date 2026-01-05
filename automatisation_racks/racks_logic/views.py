@@ -4,8 +4,8 @@ from django.shortcuts import render
 import pandas as pd
 # Create your views here.
 
-def load_all_racks():
-    file_path = "racks.xlsx"
+def load_all_racks(file_name):
+    file_path = file_name
 
     df_raw = pd.read_excel(file_path, header=None)
 
