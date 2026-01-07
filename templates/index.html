@@ -9,18 +9,25 @@
 </head>
 <body>
     <div class="rack-grid">
-       {% if rack.counter|divisibleby:9 %}
-        <div class="rack-item">
+
         {% for rack in racks %}
-                <div class="rack {{ rack.status }}">
-                    {{ rack.cell_code }} <br>
-                    {{ rack.status }} <br>
-                    {{ rack.counter }}
+                {% for rack in racks %}
+            {% if forloop.counter0|divisibleby:9 %}
+                {% if not forloop.first %}
+                    </div>
+                {% endif %}
+                <div class="rack-group">
+            {% endif %}
+            <div class="rack {{ 'ninedivisible' if rack.counter|divisibleby:9 }}">
+                {{ rack.cell_code }} <br>
+                {{ rack.status }} <br>
+                {{ rack.counter }}
+            </div>
+            {% if forloop.last %}
                 </div>
+            {% endif %}
         {% endfor %}
-           </div>
-        {% endif %}
-    
+        {% endfor %}
     </div>
 </body>
 </html>
