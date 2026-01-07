@@ -10,10 +10,20 @@
 <body>
     <div class="rack-grid">
         {% for rack in racks %}
+            {% if rack.counter|divisibleby:9 %}
+                    
+                <div class="rack {{ rack.status }} ninedivisible">
+                    {{ rack.cell_code }} <br>
+                    {{ rack.status }} <br>
+                    {{ rack.counter }}
+                </div>
+            {% else %}
                 <div class="rack {{ rack.status }}">
                     {{ rack.cell_code }} <br>
                     {{ rack.status }} <br>
+                    {{ rack.counter }}
                 </div>
+            {% endif %}
         {% endfor %}
     </div>
 </body>
