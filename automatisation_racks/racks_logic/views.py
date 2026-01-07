@@ -29,6 +29,8 @@ def racks_logic(request):
 
     racks = []
 
+    counter = 0
+
     for _, row in all_racks.iterrows():
             if type(row['Код']) == str and row['Код'].startswith("W"):
                 racks.append({
@@ -38,6 +40,7 @@ def racks_logic(request):
 
     context = {
         'racks': racks,
+        'counter': counter
     }
 
     return render(request, "index.html", context)
