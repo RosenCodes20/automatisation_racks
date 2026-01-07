@@ -30,10 +30,11 @@ def racks_logic(request):
     racks = []
 
     for _, row in all_racks.iterrows():
-            racks.append({
-                "cell_code": row["Код"],
-                "status": "заета" if row['Код'] in occupied_cells else "свободна",
-            })
+            if type(row['Код']) == str and row['Код'].startswith("W"):
+                racks.append({
+                    "cell_code": row["Код"],
+                    "status": "заета" if row['Код'] in occupied_cells else "свободна",
+                })
 
     context = {
         'racks': racks,
