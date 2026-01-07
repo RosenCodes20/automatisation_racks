@@ -5,12 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Стелажи</title>
-    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
 </head>
 <body>
     <div class="rack-grid">
         {% for rack in racks %}
-            <div class="rack">
+            <div class="rack {{ rack.status }}">
                 {{ rack.cell_code }} <br>
                 {{ rack.status }} <br>
             </div>

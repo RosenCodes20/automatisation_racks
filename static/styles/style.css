@@ -1,19 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+}
+
 .rack-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-  gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .rack {
-  height: 60px;
-  font-size: 12px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    background-color: #e0e0e0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.rack--free { background: #4caf50; }
-.rack--partial { background: #ff9800; }
-.rack--full { background: #f44336; }
+.rack:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.rack.заета,
+.rack.occupied {
+    background-color: #ffb3b3;
+    border-color: #ff4d4d;
+    color: #7a0000;
+}
+
+.rack.свободна,
+.rack.free {
+    background-color: #b3ffcc;
+    border-color: #33cc66;
+    color: #0f5132;
+}
