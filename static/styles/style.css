@@ -6,9 +6,10 @@ body {
 }
 
 .rack-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     max-width: 500px;
     margin: 0 auto;
 }
@@ -22,6 +23,17 @@ body {
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.rack-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .rack:hover {
@@ -43,6 +55,3 @@ body {
     color: #0f5132;
 }
 
-.ninedivisible {
-  margin-bottom: 1em;
-}
