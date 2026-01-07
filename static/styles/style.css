@@ -75,3 +75,11 @@ form {
     justify-content: center;
     gap: 1em;
 }
+
+form > button {
+    border: none;
+    background: darkorange;
+    color: white;
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+}
