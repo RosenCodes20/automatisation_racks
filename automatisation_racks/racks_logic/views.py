@@ -23,8 +23,8 @@ def load_all_racks(file_name, message):
 
 def add_racks(all_racks, racks, counter, occupied_cells, letter):
     for _, row in all_racks.iterrows():
-            if type(row['Код']) == str and row['Код'].startswith("W"):
-                racks.append({
+        if type(row['Код']) == str and row['Код'].startswith("W") and row['Код'].split('-')[1][0] == letter:
+            racks.append({
                     "cell_code": row["Код"],
                     "status": "заета" if row['Код'] in occupied_cells else "свободна",
                     "counter": counter,
@@ -32,7 +32,7 @@ def add_racks(all_racks, racks, counter, occupied_cells, letter):
                     "main_letter": letter
                 })
 
-                counter += 1
+            counter += 1
 
     return counter
 
@@ -60,12 +60,14 @@ def racks_logic(request):
     counter = add_racks(all_racks, f_racks, counter, occupied_cells, "F")
 
     context = {
-        "a_racks": a_racks,
-        "b_racks": b_racks,
-        "c_racks": c_racks,
-        "d_racks": d_racks,
-        "e_racks": e_racks,
-        "f_racks": f_racks,
+        "rack_groups": {
+            "A": a_racks,
+            "B": b_racks,
+            "C": c_racks,
+            "D": d_racks,
+            "E": e_racks,
+            "F": f_racks,
+        },
         'counter': counter,
     }
 

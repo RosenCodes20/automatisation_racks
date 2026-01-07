@@ -9,17 +9,16 @@
 </head>
 <body>
     <div class="rack-grid">
-        {% for rack in racks %}
-            <div class="rack-group">
-                <h3>Group {{ rack.first_letter }}</h3>
-                {% for rack in racks %}
-                    <div class="rack {{ rack.status }}">
-                        {{ rack.cell_code }} <br>
-                        {{ rack.status }}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
-    </div>
+    {% for letter, racks in rack_groups.items %}
+        <div class="rack-group">
+            {% for rack in racks %}
+                <div class="rack {{ rack.status }}">
+                    {{ rack.cell_code }} <br>
+                    {{ rack.status }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
 </body>
 </html>
