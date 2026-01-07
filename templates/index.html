@@ -9,8 +9,13 @@
 </head>
 <body>
     <div class="input">
+        <div class="file">
         <h2>Имаш подобрен файл, пусни го тук :)</h2>
-        <input type="file">
+        <form method="post">
+            <input type="file">
+            <button type="submit">Готов</button>
+        </form>    
+        </div>
 
         <p>Брой свободни места: {{ free_places }}</p>
         <p>Брой Заети Места: {{ not_free_places }}</p>
