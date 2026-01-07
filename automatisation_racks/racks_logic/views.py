@@ -43,7 +43,8 @@ def racks_logic(request):
 
     context = {
         'racks': racks,
-        'counter': counter
+        'counter': counter,
+        'current_rack': racks[counter-1]
     }
 
     return render(request, "index.html", context)
