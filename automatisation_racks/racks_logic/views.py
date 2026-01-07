@@ -29,14 +29,17 @@ def racks_logic(request):
 
     racks = []
 
-    counter = 0
+    counter = 1
 
     for _, row in all_racks.iterrows():
             if type(row['Код']) == str and row['Код'].startswith("W"):
                 racks.append({
                     "cell_code": row["Код"],
                     "status": "заета" if row['Код'] in occupied_cells else "свободна",
+                    "counter": counter,
                 })
+
+                counter += 1
 
     context = {
         'racks': racks,
