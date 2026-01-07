@@ -32,7 +32,10 @@ def add_racks(all_racks, racks, counter, occupied_cells, letter, number):
                     "main_letter": letter
                 })
 
-            counter += 1
+            if row['Код'] in occupied_cells:
+                counter[1] += 1
+            else:
+                counter[0] += 1
 
     return counter
 
@@ -41,6 +44,7 @@ def racks_logic(request):
     all_racks = load_all_racks("all_racks.xlsx", "Код")
 
     occupied_cells = set(df["Код клетка"].dropna())
+    counter = [0, 0]
 
     rack_groups = {
         "A": {1: [], 2: [], 3: []},
@@ -51,7 +55,6 @@ def racks_logic(request):
         "F": {1: [], 2: [], 3: []},
     }
 
-    counter = 1
 
     for letter in ["A", "B", "C", "D", "E", "F"]:
         for number in [1, 2, 3]:
@@ -64,11 +67,10 @@ def racks_logic(request):
                 number
             )
 
-    print(rack_groups)
-
     context = {
         "rack_groups": rack_groups,
-        'counter': counter,
+        'free_places': counter[0],
+        "not_free_places": counter[1]
     }
 
     return render(request, "index.html", context)

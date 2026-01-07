@@ -12,6 +12,9 @@
         <h2>Имаш подобрен файл, пусни го тук :)</h2>
         <input type="file">
         
+        <p>Брой свободни места: {{ free_places }}</p>
+        <p>Брой Заети Места: {{ not_free_places }}</p>
+        
     </div>
     <div class="rack-grid">
     {% for letter, rows in rack_groups.items %}

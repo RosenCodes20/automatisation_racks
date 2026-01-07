@@ -56,3 +56,7 @@ body {
 h2 {
     font-size: 0.7em;
 }
+
+.input > input {
+    font-size: 0.7em;
+}
