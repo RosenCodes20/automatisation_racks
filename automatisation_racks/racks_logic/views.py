@@ -37,6 +37,7 @@ def racks_logic(request):
                     "cell_code": row["Код"],
                     "status": "заета" if row['Код'] in occupied_cells else "свободна",
                     "counter": counter,
+                    "rack_id": row['Код'].split('-')[1]
                 })
 
                 counter += 1
