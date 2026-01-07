@@ -21,9 +21,9 @@ def load_all_racks(file_name, message):
 
     return df
 
-def add_racks(all_racks, racks, counter, occupied_cells, letter):
+def add_racks(all_racks, racks, counter, occupied_cells, letter, number):
     for _, row in all_racks.iterrows():
-        if type(row['Код']) == str and row['Код'].startswith("W") and row['Код'].split('-')[1][0] == letter:
+        if type(row['Код']) == str and row['Код'].startswith("W") and row['Код'].split('-')[1][0] == letter and row['Код'].split('-')[2] == str(number):
             racks.append({
                     "cell_code": row["Код"],
                     "status": "заета" if row['Код'] in occupied_cells else "свободна",
@@ -42,32 +42,32 @@ def racks_logic(request):
 
     occupied_cells = set(df["Код клетка"].dropna())
 
-    a_racks = []
-    b_racks = []
-    c_racks = []
-    d_racks = []
-    e_racks = []
-    f_racks = []
-
+    rack_groups = {
+        "A": {1: [], 2: [], 3: []},
+        "B": {1: [], 2: [], 3: []},
+        "C": {1: [], 2: [], 3: []},
+        "D": {1: [], 2: [], 3: []},
+        "E": {1: [], 2: [], 3: []},
+        "F": {1: [], 2: [], 3: []},
+    }
 
     counter = 1
 
-    counter = add_racks(all_racks, a_racks, counter, occupied_cells, "A")
-    counter = add_racks(all_racks, b_racks, counter, occupied_cells, "B")
-    counter = add_racks(all_racks, c_racks, counter, occupied_cells, "C")
-    counter = add_racks(all_racks, d_racks, counter, occupied_cells, "D")
-    counter = add_racks(all_racks, e_racks, counter, occupied_cells, "E")
-    counter = add_racks(all_racks, f_racks, counter, occupied_cells, "F")
+    for letter in ["A", "B", "C", "D", "E", "F"]:
+        for number in [1, 2, 3]:
+            counter = add_racks(
+                all_racks,
+                rack_groups[letter][number],
+                counter,
+                occupied_cells,
+                letter,
+                number
+            )
+
+    print(rack_groups)
 
     context = {
-        "rack_groups": {
-            "A": a_racks,
-            "B": b_racks,
-            "C": c_racks,
-            "D": d_racks,
-            "E": e_racks,
-            "F": f_racks,
-        },
+        "rack_groups": rack_groups,
         'counter': counter,
     }
 
