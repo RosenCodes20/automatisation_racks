@@ -9,7 +9,7 @@ def load_all_racks(file_name, message):
     file_path = file_name
 
     df_raw = pd.read_excel(file_path, header=None)
-
+    print(df_raw)
     header_row = df_raw.index[
         df_raw.astype(str).apply(
             lambda row: row.str.contains(message, na=False).any(),
