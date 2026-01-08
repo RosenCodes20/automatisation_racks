@@ -12,6 +12,7 @@
         <div class="file">
         <h2>Имаш подобрен файл, пусни го тук :)</h2>
         <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <input type="file" name="racks.xlsx" accept=".xlsx,.xls" required>
             <button type="submit">Готов</button>
         </form>    
