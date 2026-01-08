@@ -1,5 +1,6 @@
 import os
 
+from django.core.files.uploadedfile import UploadedFile
 from django.shortcuts import render
 import pandas as pd
 # Create your views here.
@@ -43,8 +44,15 @@ def racks_logic(request):
     df = load_all_racks("racks.xlsx", "Код клетка")
     all_racks = load_all_racks("all_racks.xlsx", "Код")
 
-    if request.method == 'POST':
-        pass
+    if request.method == "POST" and request.FILES.get("rack_file"):
+        uploaded_file: UploadedFile = request.FILES["rack_file"]
+
+        temp_path = "racks.xlsx" + ".tmp"
+        with open(temp_path, "wb+") as destination:
+            for chunk in uploaded_file.chunks():
+                destination.write(chunk)
+
+        os.replace(temp_path, "racks.xlsx")
 
     occupied_cells = set(df["Код клетка"].dropna())
     counter = [0, 0]
