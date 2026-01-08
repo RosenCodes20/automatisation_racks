@@ -46,7 +46,7 @@ def racks_logic(request):
 
     if request.method == "POST" and request.FILES.get("rack_file"):
         print("HI")
-        uploaded_file: UploadedFile = request.FILES["rack_file"]
+        uploaded_file = request.FILES["rack_file"]
 
         temp_path = "racks.xlsx" + ".tmp"
         with open(temp_path, "wb+") as destination:
