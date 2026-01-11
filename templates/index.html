@@ -25,14 +25,16 @@
     <div class="rack-grid">
     {% for letter, rows in rack_groups.items %}
         {% for row_num, racks in rows.items %}
-            <div class="rack-group">
-                {% for rack in racks %}
-                    <div class="rack {{ rack.status }}">
-                        {{ rack.cell_code }}<br>
-                        {{ rack.status }}
-                    </div>
-                {% endfor %}
-            </div>
+            {% if racks %}
+                <div class="rack-group">
+                    {% for rack in racks %}
+                        <div class="rack {{ rack.status }}">
+                            {{ rack.cell_code }}<br>
+                            {{ rack.status }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% endfor %}
     {% endfor %}
     </div>
