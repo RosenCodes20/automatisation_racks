@@ -24,6 +24,7 @@
     </div>
     <div class="rack-grid">
     {% for letter, rows in rack_groups.items %}
+        {{ letter }}
         {% for row_num, racks in rows.items %}
             {% if racks %}
                 <div class="rack-group">
