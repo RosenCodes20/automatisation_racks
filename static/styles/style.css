@@ -29,9 +29,11 @@ body {
 .rack-group {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(40px, auto);
-    gap: 0.1px;
+    grid-auto-columns: 6px;
+    gap: 35px;
     padding: 10px;
+    margin-bottom: 1em;
+
 }
 
 .rack:hover {
@@ -91,4 +93,11 @@ hr {
     width: 200%;
     margin-block-end: 0;
     margin-block-start: 1em;
+}
+
+
+.letter-row {
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }
