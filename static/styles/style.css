@@ -104,7 +104,7 @@ hr {
     gap: 1em;
 }
 
-.letter-row::after, .WH2-A101-1::after, .WH2-B103-3::after {
+.letter-row::after, .WH2-A101-1::after, .WH2-B103-1::after {
     content: "";
     position: absolute;
     left: 20px;
@@ -114,8 +114,14 @@ hr {
     background-color: black;
 }
 
-.WH2-A101-1::after, .WH2-B103-3::after {
+.WH2-A101-1::after {
     left: 85px;
+    width: 1px;
+    height: 138px;
+}
+
+.WH2-B103-1::after {
+    left: 168px;
     width: 1px;
     height: 138px;
 }
