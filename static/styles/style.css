@@ -27,6 +27,7 @@ body {
 }
 
 .rack-group {
+    position: relative;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 6px;
@@ -103,7 +104,7 @@ hr {
     gap: 1em;
 }
 
-.letter-row::after {
+.letter-row::after, .WH2-A101-1::after, .WH2-B103-3::after {
     content: "";
     position: absolute;
     left: 20px;
@@ -111,4 +112,10 @@ hr {
     bottom: -1em;
     width: 5px;
     background-color: black;
+}
+
+.WH2-A101-1::after, .WH2-B103-3::after {
+    left: 85px;
+    width: 1px;
+    height: 138px;
 }

@@ -34,7 +34,7 @@
                 {% if racks %}
                     <div class="rack-group">
                         {% for rack in racks %}
-                            <div class="rack {{ rack.status }}">
+                            <div class="rack {{ rack.cell_code }} {{ rack.status }}">
                                 {{ rack.cell_code }}<br>
                                 {{ rack.status }}
                             </div>
