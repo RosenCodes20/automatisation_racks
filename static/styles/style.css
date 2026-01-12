@@ -97,7 +97,18 @@ hr {
 
 
 .letter-row {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1em;
+}
+
+.letter-row::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: -1em;
+    width: 5px;
+    background-color: black;
 }
