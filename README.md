@@ -22,7 +22,6 @@
 
 - 🐍 **Python 3**
 - 🕸️ **Django**
-- 🗄️ **SQLite**
 - 📑 **Excel (.xlsx)**
 - 🎨 **HTML / CSS**
 
