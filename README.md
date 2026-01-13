@@ -103,7 +103,9 @@ http://127.0.0.1:8000/
 
 ## 🌎 Виж проекта за теб
 
-`https://rosenbg1234.pythonanywhere.com/`
+```bash
+https://rosenbg1234.pythonanywhere.com/
+```
 
 ---
 
