@@ -21,6 +21,19 @@ def load_all_racks(file_name, message):
 
     return df
 
+def excel_has_header(uploaded_file, header_text):
+    try:
+        df_raw = pd.read_excel(uploaded_file, header=None)
+
+        return df_raw.astype(str).apply(
+            lambda row: row.str.contains(header_text, na=False).any(),
+            axis=1
+        ).any()
+
+    except Exception:
+        return False
+
+
 def add_racks(all_racks, racks, counter, occupied_cells, letter, number):
     for _, row in all_racks.iterrows():
         if type(row['Код']) == str and row['Код'].startswith("W") and row['Код'].split('-')[1][0] == letter and row['Код'].split('-')[2] == str(number):
@@ -47,12 +60,13 @@ def racks_logic(request):
         print("HI")
         uploaded_file = request.FILES["rack_file"]
 
-        temp_path = "racks.xlsx" + ".tmp"
-        with open(temp_path, "wb+") as destination:
-            for chunk in uploaded_file.chunks():
-                destination.write(chunk)
+        if excel_has_header(uploaded_file, "Код клетка"):
+            temp_path = "racks.xlsx" + ".tmp"
+            with open(temp_path, "wb+") as destination:
+                for chunk in uploaded_file.chunks():
+                    destination.write(chunk)
 
-        os.replace(temp_path, "racks.xlsx")
+            os.replace(temp_path, "racks.xlsx")
 
     occupied_cells = set(df["Код клетка"].dropna())
     counter = [0, 0]
