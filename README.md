@@ -48,7 +48,13 @@
 
 ```bash
 git clone https://github.com/RosenCodes20/automatisation_racks.git
+```
+
+```bash
 cd automatisation_racks
+```
+
+```bash
 python manage.py runserver
 ```
 
